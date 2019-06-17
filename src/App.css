@@ -31,3 +31,41 @@
     transform: rotate(360deg);
   }
 }
+ 
+#body {
+      background-color: #375556;
+}
+
+#backlog-card {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#profile-card {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.ui.inverted.vertical.masthead.center.aligned.segment {
+  background: url("https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#searchbar {
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+.album-info {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
