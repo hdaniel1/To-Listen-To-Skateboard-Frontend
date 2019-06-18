@@ -19,12 +19,12 @@ export default class Album extends React.Component {
 
         return(
             !this.state.flipped ? 
-                <Card >
+                <Card  textAlign="center">
                     <Image src={this.props.albumInfo.album_art} />
                     <Button onClick={() => this.showMoreInfo(this.props.albumInfo)} >Album Info</Button>
                 </Card>
                 :
-                <Card>
+                <Card textAlign="center">
                     <Card.Content textAlign="left">
                         <Image floated='right' size='mini' src={this.props.albumInfo.album_art} />
                         <Card.Header floated='left'>{this.props.albumInfo.title}</Card.Header>
