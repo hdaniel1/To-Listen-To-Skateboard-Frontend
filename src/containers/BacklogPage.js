@@ -26,7 +26,14 @@ export default class BacklogPage extends React.Component {
             })
         })
         .then(res => res.json())
-        .then(response => alert("Album Added to Backlog!"))
+        .then(response => {
+            if (response.message === "Already added") {
+                alert("You've already added this album to your backlog!")
+            }
+            else {
+                alert("Album Added to Backlog!")
+            }
+        })
     }
 
     //get all albums in the db
@@ -56,7 +63,9 @@ export default class BacklogPage extends React.Component {
     render() {
         return(
             <React.Fragment>
-                <Searchbar setSearchTerm={this.changeSearchTerm}/><br /><br/>
+                <div id="searchbar">
+                    <Searchbar setSearchTerm={this.changeSearchTerm}/>
+                </div>
                 <AlbumList 
                 removeFromBacklog={this.removeFromBacklog}
                 addToBacklog={this.addToBacklog}

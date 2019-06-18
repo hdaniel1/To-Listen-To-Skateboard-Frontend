@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter, Route} from 'react-router-dom'
+import {withRouter, Route, Redirect, Switch} from 'react-router-dom'
 import './App.css';
 import NavBar from './components/NavBar'
 import BacklogCard from './containers/BacklogCard'
@@ -37,10 +37,9 @@ class App extends React.Component {
     }
 
     goBackHome = (event) => {
-      debugger
       switch (event.target.innerText){
         case "Home":
-          this.props.history.push("/")
+          this.props.history.push("/home")
           break;
         case "My Albums":
           this.showProfilePage()
@@ -55,15 +54,19 @@ class App extends React.Component {
 
     render() {
       return (
-        
-          <React.Fragment>
-            {this.state.currentUser ? <NavBar handleClick={this.goBackHome} user={this.state.currentUser}/> : null}
-              <Card.Group >
-                <Route exact path="/" render={() => <BacklogCard handleClick={this.showBacklogPage}/>} />
-                <Route exact path="/" render={() => <ProfileCard handleClick={this.showProfilePage}/>} />
-                <Route exact path="/search" render={() => <BacklogPage />} />
-                <Route exact path="/profile" render={() => <ProfilePage currentUser={this.state.currentUser}/>} />
-              </Card.Group>
+          <React.Fragment>     
+               {this.state.currentUser ? <NavBar handleClick={this.goBackHome} user={this.state.currentUser} /> : <Redirect to="/home" />}}
+               <Switch>
+                  <Route exact path="/home" render={() => 
+                      <Card.Group >
+                          <BacklogCard handleClick={this.showBacklogPage}/>
+                          <ProfileCard handleClick={this.showProfilePage}/>
+                      </Card.Group>
+                    }/>
+                  <Route exact path="/search" render={() => <BacklogPage />} />
+                  <Route exact path="/profile" render={() => <ProfilePage currentUser={this.state.currentUser}/>} />
+                  <Route path="*" render={() => <Redirect to="/home" />} />
+              </Switch>
           </React.Fragment>
       );
     }
